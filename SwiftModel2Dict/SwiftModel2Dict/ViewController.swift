@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 //        println(loadJSON())
         
         let tool = SwiftDict2Model()
-        let demo = tool.fullModelInfo(SubModelInfo.self)
+        let demo: AnyObject = tool.objectWithDictionary(loadJSON(), cls: Model.self)!
         println(demo)
         
     }
