@@ -13,11 +13,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        println(loadJSON())
+        
+        let tool = SwiftDict2Model()
+        let demo = tool.fullModelInfo(SubModelInfo.self)
+        println(demo)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadJSON() ->NSDictionary {
+        let path = NSBundle.mainBundle().pathForResource("Model01.json", ofType: nil)
+        let data = NSData(contentsOfFile: path!, options: NSDataReadingOptions.allZeros, error: nil)
+        return NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.allZeros, error: nil) as! NSDictionary
     }
 
 
