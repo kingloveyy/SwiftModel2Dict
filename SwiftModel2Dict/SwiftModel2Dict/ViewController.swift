@@ -12,15 +12,25 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        println(loadJSON())
         
-        let tool = SwiftDict2Model()
-        let demo: AnyObject = tool.objectWithDictionary(loadJSON(), cls: Model.self)!
-        println(demo)
+        let json = loadJSON()
+        let obj = SwiftDict2Model.sharedManager.objectWithDictionary(json, cls: SubModel.self) as! SubModel
         
+        println("object.info.name !!!! " + obj.info!.name!)
+        
+        println("OTHER")
+        for value in obj.other! {
+            println(value.name)
+        }
+        
+        println("OTHERS")
+        for value in obj.others! {
+            let o = value as! Info
+            println(o.name)
+        }
+        
+        println("Demo \(obj.demo!)")
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

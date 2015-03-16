@@ -9,52 +9,27 @@
 import UIKit
 
 class Model: NSObject, DictModelProtocol {
-    ///  字符串
-    var str1: NSString?
-    var str2: String?
-    ///  数值型属性
-    var b: Bool = false
+    var str1: String?
+    var str2: NSString?
+    var b: Bool = true
     var i: Int = 0
-    var i8: Int8 = 0
-    var i16: Int16 = 0
-    var i32: Int32 = 0
-    var i64: Int64 = 0
     var f: Float = 0
     var d: Double = 0
     var num: NSNumber?
-    ///  数组
-    var a1: NSMutableArray?
-    var a2: NSArray?
-    var a3: [String]?
-    ///  字典
-    var d1: NSMutableDictionary?
-    var d2: NSDictionary?
-    var d3 = ["name": "name value"]
-    // 只读属性，使用 KVC 赋值不会报错
-    private(set) internal var readonlyProperty: Int = 100
-    
-    // 自定义类属性
-    var other: OtherModel?
-    // 自定义类数组属性
-    var others: [OtherModel]?
-    // 自定义类泛型数组属性
-    var others2: Array<OtherModel>?
+    var info: Info?
+    var other: [Info]?
+    var others: NSArray?
+    var demo: NSArray?
     
     static func customeClassMapping() -> [String : String]? {
-        return ["other": "\(OtherModel.self)",
-            "others": "\(OtherModel.self)",
-            "others2": "\(OtherModel.self)"]
+        return ["info": "\(Info.self)", "other": "\(Info.self)", "others": "\(Info.self)", "demo": "\(Info.self)"];
     }
-   
 }
 
-///  自定义属性测试类
-class OtherModel: NSObject {
-    var modelName: String?
+class SubModel: Model {
+    var boy: String?
 }
 
-///  自定义子类
-class SubModelInfo: Model {
+class Info: NSObject {
     var name: String?
 }
-

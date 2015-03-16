@@ -35,6 +35,8 @@ class SwiftDict2Model {
         
         let dictInfo = fullModelInfo(cls)
         
+//        println(dictInfo)
+        
         let obj: AnyObject = cls.alloc()
         
         for (k, v) in dictInfo {
@@ -67,10 +69,11 @@ class SwiftDict2Model {
             
             if type == "NSDictionary" {
                 if let subObj: AnyObject = objectWithDictionary(value as! NSDictionary, cls: cls) {
-                } else if type == "NSArray" {
-                    if let subObj: AnyObject = objectsWithArray(value as! NSArray, cls: cls) {
-                        list.append(subObj)
-                    }
+                    list.append(subObj)
+                }
+            } else if type == "NSArray" {
+                if let subObj: AnyObject = objectsWithArray(value as! NSArray, cls: cls) {
+                    list.append(subObj)
                 }
             }
         }
